@@ -25,7 +25,7 @@ jobs:
       # Then run your tests!
       - run:
           name: Test
-          command: mvn 
+          command: mvn test
      
 
 # Invoke jobs via workflows
