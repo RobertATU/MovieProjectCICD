@@ -32,6 +32,13 @@ public class movieSelection {
         else {
             throw new IllegalArgumentException("Language does not match");
         }
+/*
+        if(ageRating.length() > 18)
+        {
+            this.ageRating = ageRating;
+        }
+*/
+
     }
 
 

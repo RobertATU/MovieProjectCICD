@@ -60,7 +60,7 @@ public class movieSelectionTest {
     @Test
     void testLanguage() {
         movieSelection movie = new movieSelection("Pulp fiction", "Crime", "English", 18, 85);
-        assertEquals("English", movie.getGenre());
+        assertEquals("English", movie.getLanguage());
         System.out.println(movie);
     }
     @Test
@@ -73,7 +73,7 @@ public class movieSelectionTest {
     @Test
     void testAgeRating() {
         movieSelection movie = new movieSelection("Pulp fiction", "Crime", "English", 18, 85);
-        assertEquals(18, movie.ageRating);
+        assertEquals(18, movie.getAgeRating());
         System.out.println(movie);
     }
     @Test
