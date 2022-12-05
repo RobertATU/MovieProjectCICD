@@ -23,6 +23,15 @@ public class movieSelection {
         else {
             throw new IllegalArgumentException("Genre does not match");
         }
+
+        if(language.equals("English") || language.equals("english"))
+        {
+            this.language = language;
+        }
+
+        else {
+            throw new IllegalArgumentException("Language does not match");
+        }
     }
 
 
