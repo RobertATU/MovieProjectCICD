@@ -18,8 +18,17 @@ public class movieSelectionTest {
     @Test
     void testTitle() {
         movieSelection movie = new movieSelection("Pulp Fiction", "Crime", "English", 18, 85);
-
+        assertEquals("Pulp Fiction", movie.getTitle());
+        System.out.println(movie);
     }
 
+
+
+
+
+    @AfterEach
+    void tearDear() {
+
+    }
 
 }
