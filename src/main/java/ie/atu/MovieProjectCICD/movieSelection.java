@@ -1,61 +1,38 @@
 package ie.atu.MovieProjectCICD;
 
 public class movieSelection {
-    String title, genre, language;
+    String title, genre;
     int ageRating, score;
 
 
-    public movieSelection(String title, String genre, String language, int ageRating, int score) {
-        if(title.equals("Pulp Fiction") || title.equals("pulp fiction") || title.equals("Pulp fiction"))
-        {
-            this.title = title;
-        }
-
-        else {
-            throw new IllegalArgumentException("Movie could not be found");
-        }
-
-        if(genre.equals("Crime")|| genre.equals("crime"))
-        {
+    public movieSelection(String genre, int ageRating, int score) {
+        if (genre.equals("Horror") || genre.equals("Action") || genre.equals("Comedy")) {
             this.genre = genre;
+        } else {
+            throw new IllegalArgumentException("Selection must be Horror, action, Comedy");
         }
 
-        else {
-            throw new IllegalArgumentException("Genre does not match");
-        }
-
-        if(language.equals("English") || language.equals("english"))
-        {
-            this.language = language;
-        }
-
-        else {
-            throw new IllegalArgumentException("Language does not match");
-        }
-/*
-        if(ageRating.length() > 18)
-        {
+        if(ageRating == (12) || ageRating == (15) || ageRating == (18)) {
             this.ageRating = ageRating;
         }
-*/
+        else {
+            throw new IllegalArgumentException("Age rating must be 12, 15 or 18");
+        }
 
-    }
+        if(score >= (10) ) {
+            this.score = score;
+        }
+        else {
+            throw new IllegalArgumentException("Score must be between 10 and 90");
+        }
 
 
-
-
-
-    public String getTitle(){
-        return title;
     }
 
     public String getGenre() {
         return genre;
     }
 
-    public String getLanguage() {
-        return language;
-    }
     public int getAgeRating() {
         return ageRating;
     }

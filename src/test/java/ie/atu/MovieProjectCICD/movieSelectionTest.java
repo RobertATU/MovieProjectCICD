@@ -16,81 +16,44 @@ public class movieSelectionTest {
     }
 
     @Test
-    void testTitle() {
-        movieSelection movie = new movieSelection("Pulp Fiction", "Crime", "English", 18, 85);
-        assertEquals("Pulp Fiction", movie.getTitle());
-        System.out.println(movie);
-    }
-
-    @Test
-    void testTitle2() {
-        movieSelection movie = new movieSelection("pulp fiction", "Crime", "English", 18, 85);
-        assertEquals("pulp fiction", movie.getTitle());
-        System.out.println(movie);
-    }
-
-    @Test
-    void testTitle3() {
-        movieSelection movie = new movieSelection("Pulp fiction", "Crime", "English", 18, 85);
-        assertEquals("Pulp fiction", movie.getTitle());
-        System.out.println(movie);
-    }
-
-    @Test
-    void testTitleFail() {
-        Exception exMessage = assertThrows(IllegalArgumentException.class, () -> new movieSelection("pup fiction", "Crime", "English", 18, 85));
-        assertEquals("Incorrect movie title", exMessage.getMessage());
-        System.out.println(exMessage.getMessage());
-    }
-
-    @Test
     void testGenre() {
-        movieSelection movie = new movieSelection("Pulp fiction", "Crime", "English", 18, 85);
-        assertEquals("Crime", movie.getGenre());
+        movieSelection movie = new movieSelection("Horror", 15, 60);
+        assertEquals("Horror", movie.getGenre());
         System.out.println(movie);
-
     }
+
     @Test
     void testGenreFail() {
-        Exception exMessage = assertThrows(IllegalArgumentException.class, () -> new movieSelection("Pulp fiction", "Adventure", "English", 18, 85));
-        assertEquals("Incorrect movie genre", exMessage.getMessage());
-        System.out.println(exMessage.getMessage());
-    }
-
-    @Test
-    void testLanguage() {
-        movieSelection movie = new movieSelection("Pulp fiction", "Crime", "English", 18, 85);
-        assertEquals("English", movie.getLanguage());
-        System.out.println(movie);
-    }
-    @Test
-    void testLanguageFail() {
-        Exception exMessage = assertThrows(IllegalArgumentException.class, () -> new movieSelection("Pulp fiction", "Crime", "Irish", 18, 85));
-        assertEquals("Incorrect language", exMessage.getMessage());
+        Exception exMessage = assertThrows(IllegalArgumentException.class, () -> new movieSelection("Crime", 15, 60));
+        assertEquals("Selection must be Horror, action, Comedy", exMessage.getMessage());
         System.out.println(exMessage.getMessage());
     }
 
     @Test
     void testAgeRating() {
-        movieSelection movie = new movieSelection("Pulp fiction", "Crime", "English", 18, 85);
+        movieSelection movie = new movieSelection("Horror", 18, 60);
         assertEquals(18, movie.getAgeRating());
         System.out.println(movie);
     }
     @Test
     void testAgeRatingFail() {
-        Exception exMessage = assertThrows(IllegalArgumentException.class, () -> new movieSelection("Pulp fiction", "Crime", "Irish", 13, 85));
-        assertEquals("Age rating does not match", exMessage.getMessage());
+        Exception exMessage = assertThrows(IllegalArgumentException.class, () -> new movieSelection("Horror", 11,60 ));
+        assertEquals("Age rating must be 12, 15 or 18", exMessage.getMessage());
         System.out.println(exMessage.getMessage());
     }
 
-
-
-
-
-
-
-
-
+    @Test
+    void testScore() {
+        movieSelection movie = new movieSelection("Horror",13, 60);
+        assertEquals(60, movie.getScore());
+        System.out.println(movie);
+    }
+    @Test
+    void testScoreFail() {
+        Exception exMessage = assertThrows(IllegalArgumentException.class, () -> new movieSelection("Horror", 13, 3));
+        assertEquals("Score must be between 10 and 90", exMessage.getMessage());
+        System.out.println(exMessage.getMessage());
+    }
 
     @AfterEach
     void tearDear() {
