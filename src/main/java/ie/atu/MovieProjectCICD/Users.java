@@ -1,14 +1,31 @@
 package ie.atu.MovieProjectCICD;
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+import java.util.Objects;
+
+@Getter
+@Setter
+@NoArgsConstructor
+@Entity
+@Table
 
 public class Users {
-    String name, email, password;
+    String name, email, password,genre;
     int age;
+    @Id
+    @GeneratedValue
+    private long count;
 
-    public Users(String name, String email, String password, int age) {
+    public Users(String name, String email, String password, int age,String genre) {
         this.setName(name);
         this.setEmail(email);
         this.setPassword(password);
         this.setAge(age);
+        this.setGenre(genre);
     }
 
     public String getName() {
@@ -102,13 +119,30 @@ public class Users {
         }
         return false;
     }
+
+    public String getGenre() {
+        return genre;
+    }
+
+    public void setGenre(String genre) {
+      if(Objects.equals(genre, "Horror") || Objects.equals(genre, "Action") || Objects.equals(genre, "Comedy")) {
+         this.genre = genre;
+       }
+
+       else{
+          throw new IllegalArgumentException("Must be Comedy, Horror, or Action");
+      }
+    }
+
     @Override
     public String toString() {
         return "Users{" +
                 "name='" + name + '\'' +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
+                ", genre='" + genre + '\'' +
                 ", age=" + age +
+                ", count=" + count +
                 '}';
     }
 }

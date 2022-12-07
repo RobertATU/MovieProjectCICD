@@ -1,5 +1,6 @@
 package ie.atu.MovieProjectCICD;
 
+import jakarta.servlet.http.HttpServletRequest;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import org.springframework.boot.SpringApplication;
@@ -12,33 +13,50 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-
 import java.util.List;
 
 
 @RestController
-@SpringBootApplication
 @RequestMapping(path="api/user")
 public class UserController {
-   UserService myService= new UserService();
+   UserService myService;
 
-    public UserController(UserService myUser){
-        this.myService = myUser;
-    }
-
-    public static void main(String[] args) {
-        SpringApplication.run(UserController.class, args);
+   public UserController(UserService myService) {
+        this.myService= myService;
     }
 
     @GetMapping
     public List<Users> myUsers() {
 
-        return myService.myUsers();
+        return myService.getUser();
     }
     @GetMapping("/{userAge}")
     public Users getUser(@PathVariable  String userAge){
 
 
         return myService.getUser(userAge);
+    }
+    @PostMapping("")
+    public void saveUser(@RequestBody Users user)
+    {
+        myService.saveUser(user);
+    }
+
+    @GetMapping("/name/{name}")
+    public Users getUsersName(@PathVariable("name")String name)
+    {
+        return myService.findUsersByName(name);
+    }
+
+    @DeleteMapping("/delete/{count}")
+    public void deleteUsers(@PathVariable("count")Long count)
+    {
+        myService.deleteUsers(count);
+    }
+
+    @GetMapping("/age")
+    public List<Users> getUsersByAgeRange(@RequestParam(name = "age_start")int age1,@RequestParam(name = "age_end")int age2 )
+    {
+        return myService.findUsersByAgeRange(age1,age2);
     }
 }
