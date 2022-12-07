@@ -44,13 +44,13 @@ public class movieSelectionTest {
 
     @Test
     void testScore() {
-        movieSelection movie = new movieSelection("Horror",13, 60);
+        movieSelection movie = new movieSelection("Horror",18, 60);
         assertEquals(60, movie.getScore());
         System.out.println(movie);
     }
     @Test
     void testScoreFail() {
-        Exception exMessage = assertThrows(IllegalArgumentException.class, () -> new movieSelection("Horror", 13, 3));
+        Exception exMessage = assertThrows(IllegalArgumentException.class, () -> new movieSelection("Horror", 18, 3));
         assertEquals("Score must be between 10 and 90", exMessage.getMessage());
         System.out.println(exMessage.getMessage());
     }
