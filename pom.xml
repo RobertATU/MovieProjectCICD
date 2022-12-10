@@ -14,7 +14,7 @@
 	<name>MovieProjectCICD</name>
 	<description>Project for CICD</description>
 	<properties>
-		<java.version>11</java.version>
+		<java.version>17</java.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -50,7 +50,6 @@
 			<version>1.18.24</version>
 			<scope>provided</scope>
 		</dependency>
-
 	</dependencies>
 
 	<build>
