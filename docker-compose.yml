@@ -1,0 +1,30 @@
+version: '2'
+
+services:
+  app:
+    image: 'movie_project_cicd_1.1:latest'
+    build:
+      context: src/main
+    container_name: MovieProjectCICD
+    ports:
+      - "8080:8080"
+
+    depends_on:
+      - ndb
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://ndb:5432/new-postgres
+      - SPRING_DATASOURCE_USERNAME=new-postgres
+      - SPRING_DATASOURCE_PASSWORD=new-postgres
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+      - SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT=org.hibernate.dialect.PostgreSQLDialect
+      - SPRING_JPA_PROPERTIES_HIBERNATE_FORMAT=.format_sql=true
+
+  ndb:
+    image: 'postgres:alpine'
+    container_name: finaldb
+    ports:
+      - "5432:5432"
+
+    environment:
+      - POSTGRES_USER=new-postgres
+      - POSTGRES_PASSWORD=new-postgres
