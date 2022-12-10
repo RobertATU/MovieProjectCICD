@@ -2,6 +2,8 @@ package ie.atu.MovieProjectCICD;
 import lombok.AllArgsConstructor;
 import org.apache.catalina.User;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 @AllArgsConstructor
@@ -14,7 +16,7 @@ public class UserService {
     }
 
     public Users getUser(String userAge) {
-        Users myUser = new Users("Nathan", "nathan@gmail.com", "N4th4n!", 20,"Horror");
+        Users myUser = new Users("Nathan", "abc@gmail.com", "N4th4n!", 20,"Horror");
         return myUser;
     }
 
@@ -32,5 +34,7 @@ public class UserService {
         return UsersRepo.findAllByAge(age1,age2);
     }
 
+
+    public void editUser(Users user) {UsersRepo.save(user);}
 
 }
