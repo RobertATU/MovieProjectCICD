@@ -24,22 +24,22 @@ public class movieController {
 
         return myService.getMovie();
     }
-    @GetMapping("/{userAge}")
-    public Users getUser(@PathVariable  String userAge){
+    @GetMapping("/{movieScore}")
+    public Users getUser(@PathVariable  String movieGenre){
 
 
-        return myService.getMovie(userAge);
+        return myService.getMovie(MovieGenre());
     }
     @PostMapping("")
-    public void saveUser(@RequestBody Users user)
+    public void saveUser(@RequestBody movieSelection movie)
     {
-        myService.saveMovie(user);
+        myService.saveMovie(movie);
     }
 
-    @GetMapping("/name/{name}")
-    public Users getUsersName(@PathVariable("name")String name)
+    @GetMapping("/genre/{genre}")
+    public Users getMovieGenre(@PathVariable("genre")String name)
     {
-        return myService.findUsersByName(name);
+        return myService.findMoviesByGenre(genre);
     }
 
     @DeleteMapping("/delete/{count}")
@@ -48,9 +48,9 @@ public class movieController {
         myService.deleteUsers(count);
     }
 
-    @GetMapping("/age")
-    public List<Users> getUsersByAgeRange(@RequestParam(name = "age_start")int age1,@RequestParam(name = "age_end")int age2 )
+    @GetMapping("/score")
+    public List<Users> getMoviesByScoreRange(@RequestParam(name = "score_start")int score1,@RequestParam(name = "score_end")int score2 )
     {
-        return myService.findUsersByAgeRange(age1,age2);
+        return myService.findUsersByScoreRange(score1,score2);
     }
 }

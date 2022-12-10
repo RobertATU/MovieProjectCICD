@@ -1,20 +1,11 @@
 package ie.atu.MovieProjectCICD;
-
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
-
-import java.util.List;
-
-public interface MovieRepo {
-    package ie.atu.MovieProjectCICD;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import java.util.List;
-    public interface  UsersRepo extends JpaRepository<Users, Long> {
+public interface  UsersRepo extends JpaRepository<movieSelection, Long>{
 
-        Users findUsersByName(String name);
+    movieSelection findMoviesByTitle(String title);
 
-        @Query("SELECT p FROM movieSelection p WHERE p.age > ?1 and p.age < ?2")
-        public List<Users> findAllByAge(int age1, int age2);
-    }
+    @Query("SELECT p FROM moveSelection p WHERE p.score > ?1 and p.score < ?2")
+    public List<movieSelection> findAllByScore(int score1, int score2);
 }
