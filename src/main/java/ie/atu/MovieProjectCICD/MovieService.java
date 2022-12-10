@@ -1,40 +1,36 @@
 package ie.atu.MovieProjectCICD;
 import lombok.AllArgsConstructor;
-import org.apache.catalina.User;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-
+@AllArgsConstructor
+@Service
 public class MovieService {
-    @AllArgsConstructor
-    @Service
-    public class MovieService {
-        private final MovieRepo MovieRepo;
+        private final movieSelectionRepo movieRepo;
         public List<movieSelection> getMovie()
         {
-            return MovieRepo.findAll();
+            return movieRepo.findAll();
         }
 
-        public Users getUser(String userAge) {
-            Movies myMovie = new movieSelection("Horror",18,90);
+        public movieSelection getMovieSelection(String movieSelection) {
+            movieSelection myMovie = new movieSelection("Horror",18,90);
             return myMovie;
         }
 
 
-        public void saveUser(movieSelection users){MovieRepo.save(movieSelection);}
+        public void saveMovieSelection(movieSelection movieSelection){movieRepo.save(movieSelection);}
 
-        public void deleteUsers(Long count) { MovieRepo.deleteById(count);
+        public void deleteMovieSelection(Long count) { movieRepo.deleteById(count);
         }
 
-        public Users findUsersByName(String name) {return MovieRepo.findUsersByName(name);
+        public movieSelection findMovieSelectionByGenre(String genre) {return movieRepo.findMoviesByGenre(genre);
         }
 
-        public List<Users> findMoviesByScoreRange(int score1, int score2)
+        public List<movieSelection> findMovieSelectionByScoreRange(int score1, int score2)
         {
-            return MovieRepo.findAllByScore(score1,score2);
+            return movieRepo.findAllByScore(score1,score2);
         }
-
-
-    }
 
 }
+
+
