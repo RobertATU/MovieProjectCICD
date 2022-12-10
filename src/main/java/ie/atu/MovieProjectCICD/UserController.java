@@ -59,4 +59,10 @@ public class UserController {
     {
         return myService.findUsersByAgeRange(age1,age2);
     }
+
+    @PutMapping("")//Put will update while post will recreate the object
+    public void editMovie(@RequestBody Users User)
+    {
+        myService.editUser(User);
+    }
 }

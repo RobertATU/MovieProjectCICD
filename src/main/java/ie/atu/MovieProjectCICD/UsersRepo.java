@@ -8,4 +8,6 @@ public interface  UsersRepo extends JpaRepository<Users, Long>{
 
     @Query("SELECT p FROM Users p WHERE p.age > ?1 and p.age < ?2")
     public List<Users> findAllByAge(int age1, int age2);
+
+
 }

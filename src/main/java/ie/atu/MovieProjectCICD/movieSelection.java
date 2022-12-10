@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.Objects;
+import java.util.Optional;
 
 @Getter
 @Setter
@@ -20,7 +21,7 @@ public class movieSelection {
     private long count;
 
 
-    public movieSelection(String genre, int ageRating, int score) {
+    public movieSelection(String title,String genre, int ageRating, int score) {
         if (genre.equals("Horror") || genre.equals("Action") || genre.equals("Comedy")) {
             this.genre = genre;
         } else {
@@ -40,10 +41,17 @@ public class movieSelection {
         else {
             throw new IllegalArgumentException("Score must be between 10 and 90");
         }
-
+        this.title = title;
 
     }
 
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
 
     public String getGenre() {
         return genre;
@@ -56,4 +64,5 @@ public class movieSelection {
     public int getScore() {
         return score;
     }
+
 }

@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -15,34 +16,35 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+
 @RestController
-@RequestMapping(path="api/Movies")
+@RequestMapping(path="api/movies")
 public class movieController {
     MovieService myService;
+    private final ie.atu.MovieProjectCICD.movieSelectionRepo movieSelectionRepo;
 
-
-
-    public movieController(MovieService myService) {
+    public movieController(MovieService myService,
+                           movieSelectionRepo movieSelectionRepo) {
         this.myService= myService;
+        this.movieSelectionRepo = movieSelectionRepo;
     }
 
     @GetMapping
-    public List<movieSelection> myMovies() {
+    public List<movieSelection> getMovies() {
 
-        return myService.getMovie();
+        return myService.getMovies();
     }
-    @GetMapping("/{movieGenre}")
-    public movieSelection getmovieSelection(@PathVariable  String movieGenre){
+    @GetMapping("/{score}")
+    public movieSelection getMovie(@PathVariable  String score){
 
 
-        return myService.getMovieSelection(movieGenre);
+        return myService.getMovie(score);
     }
     @PostMapping("")
-    public void savemovieSelection(@RequestBody movieSelection movie)
+    public void saveMovie(@RequestBody movieSelection movie)
     {
-        myService.saveMovieSelection(movie);
+        myService.saveMovie(movie);
     }
-
     @GetMapping("/genre/{genre}")
     public movieSelection getMovieGenre(@PathVariable("genre")String genre)
     {
@@ -60,4 +62,16 @@ public class movieController {
     {
         return myService.findMovieSelectionByScoreRange(score1,score2);
     }
+    @GetMapping("/age")
+    public List<movieSelection> getMoviesByAgeRange(@RequestParam(name = "age_start")int age1,@RequestParam(name = "age_end")int age2 )
+    {
+        return myService.findMovieSelectionByAgeRange(age1,age2);
+    }
+  @PutMapping("")//Put will update while post will recreate the object
+  public void editMovie(@RequestBody movieSelection movie)
+  {
+      myService.editMovie(movie);
+  }
+
+
 }
