@@ -1,5 +1,8 @@
 version: 2.1
 
+orbs:
+  docker: circleci/docker@1.7.0
+
 jobs:
 
   build-and-test:
@@ -21,7 +24,15 @@ jobs:
       - store_test_results: # uploads the test metadata from the `target/surefire-reports` directory so that it can show up in the CircleCI dashboard.
           # Upload test results for display in Test Summary: https://circleci.com/docs/2.0/collect-test-data/
           path: target/surefire-reports
-     
+  dImage build:  
+    docker:
+      # replace with your preferred image
+      - image:  cimg/openjdk:17.0
+    steps:
+      - docker/build:
+          image: robertmuldoon/movie_project_cicd_1.1:latest 
+          lint-dockerfile: false 
+          treat-warnings-as-errors: false 
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
@@ -30,3 +41,4 @@ workflows:
     # Inside the workflow, you define the jobs you want to run.
     jobs:
       - build-and-test
+      - dImage build
