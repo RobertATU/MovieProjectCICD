@@ -65,4 +65,11 @@ public class movieSelection {
         return score;
     }
 
+    @Override
+    public String toString() {
+        return  "\nTitle:" + title +
+                "\nGenre:" + genre +
+                "\nAge rating:" + ageRating +
+                "\nCritic score:" + score;
+    }
 }

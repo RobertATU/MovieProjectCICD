@@ -6,12 +6,20 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
+import java.util.Scanner;
+
 @AllArgsConstructor
 @Service
 public class UserService {
     private final UsersRepo UsersRepo;
     public List<Users> getUser()
     {
+
+        System.out.println("Enter customer Email:" );
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter a String");
+        String str = sc.nextLine();
+        System.out.println("The String input using Scanner class is: " +str);
         return UsersRepo.findAll();
     }
 
@@ -26,7 +34,7 @@ public class UserService {
     public void deleteUsers(Long count) { UsersRepo.deleteById(count);
     }
 
-    public Users findUsersByName(String name) {return UsersRepo.findUsersByName(name);
+    public Users findUsersByGenre(String genre) {return UsersRepo.findUsersByGenre(genre);
     }
 
     public List<Users> findUsersByAgeRange(int age1, int age2)

@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.context.event.ApplicationReadyEvent;
+import org.springframework.context.event.EventListener;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.boot.SpringApplication;
@@ -23,8 +25,7 @@ public class movieController {
     MovieService myService;
     private final ie.atu.MovieProjectCICD.movieSelectionRepo movieSelectionRepo;
 
-    public movieController(MovieService myService,
-                           movieSelectionRepo movieSelectionRepo) {
+    public movieController(MovieService myService, movieSelectionRepo movieSelectionRepo) {
         this.myService= myService;
         this.movieSelectionRepo = movieSelectionRepo;
     }
@@ -35,7 +36,7 @@ public class movieController {
         return myService.getMovies();
     }
     @GetMapping("/{score}")
-    public movieSelection getMovie(@PathVariable  String score){
+    public movieSelection getMovie(@PathVariable  int score){
 
 
         return myService.getMovie(score);

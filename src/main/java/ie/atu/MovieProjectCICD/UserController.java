@@ -42,10 +42,12 @@ public class UserController {
         myService.saveUser(user);
     }
 
+
+
     @GetMapping("/name/{name}")
-    public Users getUsersName(@PathVariable("name")String name)
+    public Users getUsersGenre(@PathVariable("genre")String genre)
     {
-        return myService.findUsersByName(name);
+        return myService.findUsersByGenre(genre);
     }
 
     @DeleteMapping("/delete/{count}")

@@ -14,9 +14,6 @@ public class MovieProjectCicdApplication {
 		SpringApplication.run(MovieProjectCicdApplication.class, args);
 
 	}
-	@EventListener(ApplicationReadyEvent.class)
-	public void sendMail(){
-		sender.sendEmail("g00395612@atu.ie", "Movie", "Hello Mr Muldoon I want to talk to you about your upcoming film");
-	}
+
 
 }
