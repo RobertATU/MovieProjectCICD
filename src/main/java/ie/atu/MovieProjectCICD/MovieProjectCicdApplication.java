@@ -9,7 +9,6 @@ import org.springframework.context.event.EventListener;
 @SpringBootApplication
 public class MovieProjectCicdApplication {
  @Autowired
- private EmailSender sender;
 	public static void main(String[] args) {
 		SpringApplication.run(MovieProjectCicdApplication.class, args);
 

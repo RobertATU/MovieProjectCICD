@@ -15,11 +15,7 @@ public class UserService {
     public List<Users> getUser()
     {
 
-        System.out.println("Enter customer Email:" );
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Enter a String");
-        String str = sc.nextLine();
-        System.out.println("The String input using Scanner class is: " +str);
+
         return UsersRepo.findAll();
     }
 

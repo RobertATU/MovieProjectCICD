@@ -21,7 +21,7 @@ services:
 
   ndb:
     image: 'robertmuldoon/ndb:latest'
-    container_name: finaldb
+    container_name: workingdb
     ports:
       - "5432:5432"
 
