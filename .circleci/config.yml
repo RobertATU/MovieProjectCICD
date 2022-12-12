@@ -24,7 +24,7 @@ jobs:
           # Upload test results for display in Test Summary: https://circleci.com/docs/2.0/collect-test-data/
           path: target/surefire-reports
       - docker/build:
-          image: robertmuldoon/movie_project_cicd_1.1:latest          
+          image: robertmuldoon/movie_project_cicd_1.1         
           
 
       
