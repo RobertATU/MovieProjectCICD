@@ -17,7 +17,7 @@ public class Users {
     String name, email, password,genre;
     int age;
     @Id
-    @GeneratedValue
+    @GeneratedValue//
     private long count;
 
     public Users(String name, String email, String password, int age,String genre) {
