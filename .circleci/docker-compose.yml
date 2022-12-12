@@ -2,9 +2,8 @@ version: '2'
 
 services:
   app:
-    image: 'robertmuldoon/movie_project_cicd_1.1:latest'
-    build:
-      context: src/main
+    image: robertmuldoon/movie_project_cicd_1.1:latest
+
     container_name: MovieProjectCICD
     ports:
       - "8080:8080"
@@ -20,7 +19,7 @@ services:
       - SPRING_JPA_PROPERTIES_HIBERNATE_FORMAT=.format_sql=true
 
   ndb:
-    image: 'robertmuldoon/ndb:latest'
+    image: robertmuldoon/ndb:latest
     container_name: workingdb
     ports:
       - "5432:5432"
