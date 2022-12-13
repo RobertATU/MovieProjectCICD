@@ -1,6 +1,4 @@
 version: 2.1
-orbs:
-  docker: circleci/docker@1.7.0
 
 jobs:
 
@@ -20,21 +18,12 @@ jobs:
       - run:
           name: Test
           command: mvn install
-      - store_test_results: # uploads the test metadata from the `target/surefire-reports` directory so that it can show up in the CircleCI dashboard.
-          # Upload test results for display in Test Summary: https://circleci.com/docs/2.0/collect-test-data/
+      - store_test_results: #uploads the test results
           path: target/surefire-reports
           
-            
           
-
-      
-     
-
-# Invoke jobs via workflows
-# See: https://circleci.com/docs/2.0/configuration-reference/#workflows
 workflows:
   Test:
     jobs:
       - build-and-test
-      - docker/publish:
-            image: movie_project_cicd_1.1
+      
