@@ -23,6 +23,7 @@ jobs:
       - store_test_results: # uploads the test metadata from the `target/surefire-reports` directory so that it can show up in the CircleCI dashboard.
           # Upload test results for display in Test Summary: https://circleci.com/docs/2.0/collect-test-data/
           path: target/surefire-reports
+          
             
           
 
@@ -32,7 +33,8 @@ jobs:
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
 workflows:
-  sample: # This is the name of the workflow, feel free to change it to better match your workflow.
-    # Inside the workflow, you define the jobs you want to run.
+  Test:
     jobs:
       - build-and-test
+      - docker/publish:
+            image: robertmuldoon/movie_project_cicd_1.1:latest 
