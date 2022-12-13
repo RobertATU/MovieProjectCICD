@@ -1,32 +1,6 @@
 version: 2.1
-
-services:
-  app:
-    image: robertmuldoon/movie_project_cicd_1.1:latest
-
-    container_name: MovieProjectCICD
-    ports:
-      - "8080:8080"
-
-    depends_on:
-      - ndb
-    environment:
-      - SPRING_DATASOURCE_URL=jdbc:postgresql://ndb:5432/new-postgres
-      - SPRING_DATASOURCE_USERNAME=new-postgres
-      - SPRING_DATASOURCE_PASSWORD=new-postgres
-      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
-      - SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT=org.hibernate.dialect.PostgreSQLDialect
-      - SPRING_JPA_PROPERTIES_HIBERNATE_FORMAT=.format_sql=true
-
-  ndb:
-    image: robertmuldoon/ndb:latest
-    container_name: workingdb
-    ports:
-      - "5432:5432"
-
-    environment:
-      - POSTGRES_USER=new-postgres
-      - POSTGRES_PASSWORD=new-postgres
+orbs:
+  docker: circleci/docker@1.7.0
 
 jobs:
 
@@ -45,13 +19,18 @@ jobs:
       # Then run your tests!
       - run:
           name: Test
-          command: mvn install
-      - store_test_results: #uploads the test results
+          command: mvn test
+      - store_test_results: 
           path: target/surefire-reports
+            
           
-          
+
+      
+     
+
+# Invoke jobs via workflows
+# See: https://circleci.com/docs/2.0/configuration-reference/#workflows
 workflows:
-  Test:
+  sample:
     jobs:
       - build-and-test
-      
