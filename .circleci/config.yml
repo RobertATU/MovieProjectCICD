@@ -37,4 +37,4 @@ workflows:
     jobs:
       - build-and-test
       - docker/publish:
-            image: robertmuldoon/movie_project_cicd_1.1:latest 
+            image: robertmuldoon/movie_project_cicd_1.1
