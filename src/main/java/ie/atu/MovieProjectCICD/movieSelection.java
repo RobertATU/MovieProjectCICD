@@ -58,7 +58,7 @@ public class movieSelection {
     }
 
     public int getAgeRating() {
-        return ageRating;
+        return ageRating;//
     }
 
     public int getScore() {
